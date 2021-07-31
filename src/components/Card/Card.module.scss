@@ -1,0 +1,62 @@
+.card {
+  border: 1px solid #f3f3f3;
+  border-radius: 40px;
+  padding: 20px 30px 35px;
+  max-width: 220px;
+  height: 260px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  margin:0 25px 25px 0;
+  &:hover {
+    transform: translateY(-8px);
+  }
+  &__img {
+    object-fit: cover;
+    width: 130px;
+    height: 110px;
+    margin-bottom: 15px;
+  }
+  &__title {
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 15px;
+  }
+
+  &__prise_name {
+    display: block;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-transform: uppercase;
+    color: #bdbdbd;
+  }
+  &__prise_current {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  &__bye {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__add {
+    position: relative;
+    font-size: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      right: -6px;
+      width: 30px;
+      height: 30px;
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      background-image: url("../../assets/img/search.svg");
+    }
+  }
+}
