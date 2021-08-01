@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = () => {
+const Header = (props) => {
     return (
 
         <div className="header">
@@ -24,7 +24,7 @@ const Header = () => {
                     </div>
 
                     <div className="header__nav">
-                        <button className="header__cart">
+                        <button onClick={props.onClickCart} className="header__cart">
                             <span className="header__price">1205 руб.</span>
                         </button>
                         <button className="header__like">Like</button>
