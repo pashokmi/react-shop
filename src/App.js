@@ -4,26 +4,30 @@ import Header from "./components/Header";
 import Cart from "./components/Cart";
 
 
-
 function App() {
-  const [items, setItems] = React.useState([])
-  const [cartItems, setCartItems] = React.useState([])
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState('');
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
     fetch('https://610688cc1f3487001743796f.mockapi.io/items')
       .then((res) => {
-      return res.json();
-    })
+        return res.json();
+      })
       .then((json) => {
         setItems(json);
       })
   }, []);
 
-  const onAddToCart = () => {
-
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj])
   }
 
+  const onChangeSearchInput = (event) => {
+    // console.log(event.target.value)
+    setSearchValue(event.target.value);
+  }
   return (
     <>
       <Header onClickCart={() => setCartOpened(true)}/>
@@ -31,19 +35,26 @@ function App() {
       <div className="hero">
         <div className="container">
           <div className="hero__wrapper">
-            <h2 className="hero__title">Все кроссовки</h2>
+            <h2 className="hero__title">{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все кроссовки'}</h2>
             <label className="hero__label">
               <button className="hero__btn">Поиск</button>
-              <input className="hero__input" type="text" placeholder="Поиск..."/>
+              {searchValue &&
+              <button
+                onClick={() =>
+                setSearchValue('')}
+                className="hero__close"></button>}
+              <input onChange={onChangeSearchInput} className="hero__input" value={searchValue} type="text"
+                     placeholder="Поиск..."/>
             </label>
           </div>
           <div className="hero__inner">
 
-            {items.map((obj) => (
+            {items.map((item, index) => (
                 <Card
-                  title={obj.title}
-                  price={obj.price}
-                  imageUrl={obj.imageUrl}
+                  key={index}
+                  title={item.title}
+                  price={item.price}
+                  imageUrl={item.imageUrl}
                   onFavorite={() => console.log('Press Favorite')}
                   onPlus={onAddToCart}
                 />

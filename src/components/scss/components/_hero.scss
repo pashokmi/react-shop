@@ -10,13 +10,15 @@
     font-weight: bold;
     font-size: 32px;
     line-height: 39px;
+    max-width: 600px;
+    width: 100%;
   }
   &__btn {
     position: relative;
     font-size: 0;
     width: 40px;
     height: 40px;
-    &::before {
+    &::after {
       content: "";
       position: absolute;
       top: -8px;
@@ -28,13 +30,29 @@
       background-image: url("../../../assets/img/search.svg");
     }
   }
+  &__close{
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -270px;
+      width: 30px;
+      height: 30px;
+      transform: rotate(45deg);
+      background-repeat: no-repeat;
+      background-position: bottom left;
+      background-image: url("../../../assets/img/plus.svg");
+    }
+  }
+
   &__input {
     border: 1px solid #f3f3f3;
-    padding: 15px 15px 15px 45px;
+    padding: 15px 45px 15px 45px;
     border-radius: 10px;
     font-size: 14px;
     line-height: 17px;
-    color: #c4c4c4;
+    color: #000;
 
     &::placeholder {
       font-size: 14px;
@@ -75,7 +93,6 @@
   &__btn{
     font-size: 24px;
     cursor: pointer;
-
   }
 
   &__top {
