@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = ({onClose, items = []}) => {
+const Cart = ({onClose,onRemove , items = []}) => {
   return (
     <div className="cart">
       <div className="cart__wrapper">
@@ -18,7 +18,7 @@ const Cart = ({onClose, items = []}) => {
                 <div className="cart__bottom">
                   <h3 className="cart__name">{obj.title}</h3>
                   <span className="cart__prise">{obj.price} руб.</span>
-                  <button className="cart__close">x</button>
+                  <button onClick={() => onRemove(obj.id)} className="cart__close">x</button>
                 </div>
 
               </div>

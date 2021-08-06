@@ -18,7 +18,7 @@ const Card = ({onFavorite, title, imageUrl, price, onPlus}) => {
 
     return (
         <article className={cardStyles.card}>
-            <button className={cardStyles.card__favorite} onClick={ onFavorite}>add</button>
+            <button className={cardStyles.card__favorite} onClick={ onFavorite }>add</button>
             <img className={cardStyles.card__img} src={imageUrl}
                  alt="sneakers"/>
             <h2 className={cardStyles.card__title}>{title}</h2>
